@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../css/Personalnformation.css">
 </head>
 <body>
+ <form>
     <header class="headerContainer"><h1>HTML 5 From Input Fields</h1></header>
     <div>
         <label for="text">Text input type for Name : </label>
@@ -19,6 +20,7 @@
     <div>
         <label for="email">Email input type : </label>
         <input type="email" id="email" name="email">
+        <error-output class="email-error" for="email"></error-output>
     </div>
     <div>
         <label for="url">URL input type : </label>
@@ -46,6 +48,7 @@
     <div>
       <button>Submit</button>
     </div>
+ </form>
 <script>
   const text =  document.querySelector('#text');
   const textError =  document.querySelector('.text-error');
@@ -54,6 +57,15 @@
     if(firstNameRegex.test(text.value))
     textError.textContent = "";
     else textError.textContent = "First Name is Incorrect!";
+  });
+
+  const email = document.querySelector('#email');
+  const emailError = document.querySelector('.email-error');
+  email.addEventListener('input',function(){
+    let emailRegex = RegExp('[a-z][a-z A-Z 0-9]+[@][a-z]+[.][a-z]{2,5}');
+    if(emailRegex.test(email.value))
+    emailError.textContent = "";
+    else textError.textContent = "Email is incorrect";
   });
 
   const salary = document.querySelector('#salary');
